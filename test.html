@@ -1,0 +1,237 @@
+// document.addEventListener("DOMContentLoaded", function () {
+    //     const sidebar = document.querySelector(".main-sidebar");
+    //     const content = document.querySelector(".content");
+    //     const toggleButton = document.querySelector(".toggle-btn");
+    
+    //     toggleButton.addEventListener("click", function () {
+    //         sidebar.classList.toggle("active");
+    
+    //         if (sidebar.classList.contains("active")) {
+    //             content.style.width = "75%";
+    //         } else {
+    //             content.style.width = "100%";
+    //         }
+    //     });
+    // });
+
+    .main-container {
+        display: flex;
+        transition: all 0.5s ease-in-out;
+    }
+    
+    .main-sidebar {
+        position: absolute;
+        left: -100%;
+        width: 25%;
+        height: 80vh;
+        opacity: 0;
+        transition: all 0.5s ease-in-out;
+    }
+    
+    .menu {
+        padding: 20px;
+        width: 90%;
+        height: 86vh;
+        border-radius: 10px;
+        background-color: #fff;
+    }
+    
+    .main-sidebar-wrapper {
+        width: 100%;
+        height: 100%;
+        position: relative;
+    }
+    
+    /* Sidebar active होने पर */
+    .main-sidebar.active {
+        left: 0;
+        opacity: 1;
+        position: relative;
+    }
+    
+    /* Content */
+    .content {
+        flex: 1;
+        width: 100%;
+        transition: all 0.5s ease-in-out;
+    }
+    
+    /* जब sidebar active हो, तब content की width कम हो */
+    .main-sidebar.active + .content {
+        width: 75%;
+    }
+    
+    
+    <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>4URSPACE</title>
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style2.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+</head>
+<body>
+    <main class="main-container"> 
+        <!-- Sidebar -->
+        <div class="main-sidebar" id="sidebar">
+            <button class="sidebar-icon-close" id="closeSidebar">✖</button>
+            <!-- Sidebar Content -->
+        </div>
+    
+        <!-- Sidebar Toggle Button -->
+        <div class="sidebar-icon active" id="toggleSidebar">
+            <button> <img src="./img/sidebar.svg" alt="Sidebar Toggle"></button>
+        </div>
+    
+        <!-- Main Content -->
+        <section class="content">
+            <!-- Page Content Here -->
+        </section>
+    </main>
+    
+
+    <script src="./script.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
+
+    
+
+@media (max-width: 768px) {
+    .main-container {
+        position: relative;
+        display: flex; /* ✅ Flex hatao taaki content squeeze na ho */
+        width: 100% !important;
+    }
+
+    .main-sidebar {
+        position: fixed; /* ✅ Absolute hatao, fixed use karo */
+        top: 0;
+        left: -100%;
+        width: 100% !important; /* ✅ Adjust width */
+        height: 100%;
+        transition: left 0.5s ease-in-out;
+        z-index: 1000;
+        visibility: hidden;
+        background: white;
+        pointer-events: none;
+        margin-right: 5%;
+    }
+
+    .main-sidebar.active {
+        left: 0;
+        opacity: 1;
+        visibility: visible;
+        pointer-events: auto;
+    }
+
+    .content {
+        
+        width: 100% !important;
+        position: relative;
+        z-index: 1 !important; 
+    }
+
+    .main-sidebar.active ~ .content {
+        width: 100% !important; /* ✅ Ensure it stays full width */
+    }
+
+    .sidebar-icon{
+        padding-left: 0;
+    }
+
+
+    .sidebar-icon-close{
+        position: absolute;
+        right: 0;
+        top: 0 !important;
+        padding: 0;
+    }
+
+
+    .content-img {
+        position: absolute;
+        top: 30% !important; /* ✅ Image bilkul top se start hogi */
+        left: 50%; /* ✅ Horizontally center */
+        transform: translateX(-50%); /* ✅ Left-right se perfectly center */
+        width: 100% !important; /* ✅ Full width */
+        max-width: 100vw; /* ✅ Screen ke andar rahe */
+        z-index: -1; /* ✅ Background me rahe, but visible ho */
+    }
+    
+}
+        
+
+
+"<ul class="dropdown-3"> 
+    <li  class="rename-chat"><svg width="16" height="15" viewBox="0 0 16 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M10.6666 0.833496H5.33331C2.66665 0.833496 1.33331 2.16683 1.33331 4.8335V13.5002C1.33331 13.8668 1.63331 14.1668 1.99998 14.1668H10.6666C13.3333 14.1668 14.6666 12.8335 14.6666 10.1668V4.8335C14.6666 2.16683 13.3333 0.833496 10.6666 0.833496Z" stroke="#292D32" stroke-opacity="0.9" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M8.60667 4.72677L5.14667 8.18677C5.01334 8.3201 4.88667 8.5801 4.86001 8.76677L4.67334 10.0868C4.60668 10.5668 4.94001 10.9001 5.42001 10.8334L6.73999 10.6468C6.92666 10.6201 7.18668 10.4934 7.32001 10.3601L10.78 6.9001C11.3733 6.30677 11.66 5.61343 10.78 4.73343C9.90001 3.84677 9.20667 4.12677 8.60667 4.72677Z" stroke="#292D32" stroke-opacity="0.9" stroke-width="1.2" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M8.11328 5.22021C8.40661 6.26688 9.22661 7.09355 10.2799 7.38688" stroke="#292D32" stroke-opacity="0.9" stroke-width="1.2" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+
+Rename</li>
+    <li  class="move-chat">
+    <svg width="16" height="17" viewBox="0 0 16 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M5.91334 12.7067C2.74 12.7067 2.58 12.5467 2.58 9.37337C2.58 6.20004 2.74 6.04004 5.91334 6.04004H13.2467" stroke="#292D32" stroke-opacity="0.9" stroke-width="1.2" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M11.7132 7.70691L13.4199 6.00025L11.7132 4.29358" stroke="#292D32" stroke-opacity="0.9" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+
+
+Move to</li>
+    <li class="delete-chat"><svg width="14" height="15" viewBox="0 0 14 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M13 3.48665C10.78 3.26665 8.54667 3.15332 6.32 3.15332C5 3.15332 3.68 3.21999 2.36 3.35332L1 3.48665" stroke="#E63C42" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M4.66669 2.8135L4.81335 1.94016C4.92002 1.30683 5.00002 0.833496 6.12669 0.833496H7.87335C9.00002 0.833496 9.08669 1.3335 9.18669 1.94683L9.33335 2.8135" stroke="#E63C42" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M11.5667 5.59326L11.1334 12.3066C11.06 13.3533 11 14.1666 9.14002 14.1666H4.86002C3.00002 14.1666 2.94002 13.3533 2.86668 12.3066L2.43335 5.59326" stroke="#E63C42" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M5.88666 10.5H8.10666" stroke="#E63C42" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M5.33331 7.8335H8.66665" stroke="#E63C42" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+Remove</li>"
+
+
+
+<svg class="icon-hover" width="16" height="17" viewBox="0 0 16 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M2.33371 8.11933V4.68599C2.33371 2.41933 2.90038 1.85266 5.16704 1.85266H6.01371C6.86038 1.85266 7.05371 2.10599 7.37371 2.53266L8.22038 3.66599C8.43371 3.94599 8.56038 4.11933 9.12704 4.11933H10.827C13.0937 4.11933 13.6604 4.68599 13.6604 6.95266V8.146" fill="#BBBDBF"/>
+    <path d="M2.33371 8.11933V4.68599C2.33371 2.41933 2.90038 1.85266 5.16704 1.85266H6.01371C6.86038 1.85266 7.05371 2.10599 7.37371 2.53266L8.22038 3.66599C8.43371 3.94599 8.56038 4.11933 9.12704 4.11933H10.827C13.0937 4.11933 13.6604 4.68599 13.6604 6.95266V8.146" stroke="#647080" stroke-width="1.2" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M14.4464 10.0348L14.1797 13.3682C14.0797 14.3882 13.9997 15.1682 12.193 15.1682H3.80638C1.99971 15.1682 1.91971 14.3882 1.81971 13.3682L1.55305 10.0348C1.49971 9.48151 1.67305 8.96817 1.98638 8.57484C1.99305 8.56817 1.99305 8.56817 1.99971 8.56151C2.36638 8.11484 2.91971 7.83484 3.53971 7.83484H12.4597C13.0797 7.83484 13.6264 8.11484 13.9864 8.54817C13.993 8.55484 13.9997 8.56151 13.9997 8.56817C14.3264 8.96151 14.5064 9.47484 14.4464 10.0348Z" fill="white" stroke="#647080" stroke-width="1.2" stroke-miterlimit="10"/>
+    <path d="M5 11.2857L11 11.2857L9.71429 10" stroke="#647080" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M11 11.2856L9.71429 12.5714" stroke="#647080" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+    
+
+    <ul class="dropdown-3">
+        <li><svg class="icon-btn" width="22" height="20" viewBox="0 0 22 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M21 9.1V14.5C21 18.1 20 19 16 19H6C2 19 1 18.1 1 14.5V5.5C1 1.9 2 1 6 1H7.5C9 1 9.33 1.396 9.9 2.08L11.4 3.88C11.78 4.33 12 4.6 13 4.6H16C20 4.6 21 5.5 21 9.1Z" fill="#EAEBEE" stroke="#3D4C60" stroke-width="1.2" stroke-miterlimit="10"/>
+                            <svg class="icon-hover" width="16" height="17" viewBox="0 0 16 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M2.33371 8.11933V4.68599C2.33371 2.41933 2.90038 1.85266 5.16704 1.85266H6.01371C6.86038 1.85266 7.05371 2.10599 7.37371 2.53266L8.22038 3.66599C8.43371 3.94599 8.56038 4.11933 9.12704 4.11933H10.827C13.0937 4.11933 13.6604 4.68599 13.6604 6.95266V8.146" fill="#BBBDBF"/>
+    <path d="M2.33371 8.11933V4.68599C2.33371 2.41933 2.90038 1.85266 5.16704 1.85266H6.01371C6.86038 1.85266 7.05371 2.10599 7.37371 2.53266L8.22038 3.66599C8.43371 3.94599 8.56038 4.11933 9.12704 4.11933H10.827C13.0937 4.11933 13.6604 4.68599 13.6604 6.95266V8.146" stroke="#647080" stroke-width="1.2" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M14.4464 10.0348L14.1797 13.3682C14.0797 14.3882 13.9997 15.1682 12.193 15.1682H3.80638C1.99971 15.1682 1.91971 14.3882 1.81971 13.3682L1.55305 10.0348C1.49971 9.48151 1.67305 8.96817 1.98638 8.57484C1.99305 8.56817 1.99305 8.56817 1.99971 8.56151C2.36638 8.11484 2.91971 7.83484 3.53971 7.83484H12.4597C13.0797 7.83484 13.6264 8.11484 13.9864 8.54817C13.993 8.55484 13.9997 8.56151 13.9997 8.56817C14.3264 8.96151 14.5064 9.47484 14.4464 10.0348Z" fill="white" stroke="#647080" stroke-width="1.2" stroke-miterlimit="10"/>
+    <path d="M5 11.2857L11 11.2857L9.71429 10" stroke="#647080" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M11 11.2856L9.71429 12.5714" stroke="#647080" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+
+                            </svg>MyNew Project</li>
+        <li ><svg class="icon-btn" width="22" height="20" viewBox="0 0 22 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M21 9.1V14.5C21 18.1 20 19 16 19H6C2 19 1 18.1 1 14.5V5.5C1 1.9 2 1 6 1H7.5C9 1 9.33 1.396 9.9 2.08L11.4 3.88C11.78 4.33 12 4.6 13 4.6H16C20 4.6 21 5.5 21 9.1Z" fill="#EAEBEE" stroke="#3D4C60" stroke-width="1.2" stroke-miterlimit="10"/>
+                            </svg> <svg class="icon-hover" width="16" height="17" viewBox="0 0 16 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M2.33371 8.11933V4.68599C2.33371 2.41933 2.90038 1.85266 5.16704 1.85266H6.01371C6.86038 1.85266 7.05371 2.10599 7.37371 2.53266L8.22038 3.66599C8.43371 3.94599 8.56038 4.11933 9.12704 4.11933H10.827C13.0937 4.11933 13.6604 4.68599 13.6604 6.95266V8.146" fill="#BBBDBF"/>
+    <path d="M2.33371 8.11933V4.68599C2.33371 2.41933 2.90038 1.85266 5.16704 1.85266H6.01371C6.86038 1.85266 7.05371 2.10599 7.37371 2.53266L8.22038 3.66599C8.43371 3.94599 8.56038 4.11933 9.12704 4.11933H10.827C13.0937 4.11933 13.6604 4.68599 13.6604 6.95266V8.146" stroke="#647080" stroke-width="1.2" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M14.4464 10.0348L14.1797 13.3682C14.0797 14.3882 13.9997 15.1682 12.193 15.1682H3.80638C1.99971 15.1682 1.91971 14.3882 1.81971 13.3682L1.55305 10.0348C1.49971 9.48151 1.67305 8.96817 1.98638 8.57484C1.99305 8.56817 1.99305 8.56817 1.99971 8.56151C2.36638 8.11484 2.91971 7.83484 3.53971 7.83484H12.4597C13.0797 7.83484 13.6264 8.11484 13.9864 8.54817C13.993 8.55484 13.9997 8.56151 13.9997 8.56817C14.3264 8.96151 14.5064 9.47484 14.4464 10.0348Z" fill="white" stroke="#647080" stroke-width="1.2" stroke-miterlimit="10"/>
+    <path d="M5 11.2857L11 11.2857L9.71429 10" stroke="#647080" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M11 11.2856L9.71429 12.5714" stroke="#647080" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>LV Singapore</li>
+        <li ><svg class="icon-btn" width="22" height="20" viewBox="0 0 22 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M21 9.1V14.5C21 18.1 20 19 16 19H6C2 19 1 18.1 1 14.5V5.5C1 1.9 2 1 6 1H7.5C9 1 9.33 1.396 9.9 2.08L11.4 3.88C11.78 4.33 12 4.6 13 4.6H16C20 4.6 21 5.5 21 9.1Z" fill="#EAEBEE" stroke="#3D4C60" stroke-width="1.2" stroke-miterlimit="10"/>
+                            </svg> <svg class="icon-hover" width="16" height="17" viewBox="0 0 16 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M2.33371 8.11933V4.68599C2.33371 2.41933 2.90038 1.85266 5.16704 1.85266H6.01371C6.86038 1.85266 7.05371 2.10599 7.37371 2.53266L8.22038 3.66599C8.43371 3.94599 8.56038 4.11933 9.12704 4.11933H10.827C13.0937 4.11933 13.6604 4.68599 13.6604 6.95266V8.146" fill="#BBBDBF"/>
+    <path d="M2.33371 8.11933V4.68599C2.33371 2.41933 2.90038 1.85266 5.16704 1.85266H6.01371C6.86038 1.85266 7.05371 2.10599 7.37371 2.53266L8.22038 3.66599C8.43371 3.94599 8.56038 4.11933 9.12704 4.11933H10.827C13.0937 4.11933 13.6604 4.68599 13.6604 6.95266V8.146" stroke="#647080" stroke-width="1.2" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M14.4464 10.0348L14.1797 13.3682C14.0797 14.3882 13.9997 15.1682 12.193 15.1682H3.80638C1.99971 15.1682 1.91971 14.3882 1.81971 13.3682L1.55305 10.0348C1.49971 9.48151 1.67305 8.96817 1.98638 8.57484C1.99305 8.56817 1.99305 8.56817 1.99971 8.56151C2.36638 8.11484 2.91971 7.83484 3.53971 7.83484H12.4597C13.0797 7.83484 13.6264 8.11484 13.9864 8.54817C13.993 8.55484 13.9997 8.56151 13.9997 8.56817C14.3264 8.96151 14.5064 9.47484 14.4464 10.0348Z" fill="white" stroke="#647080" stroke-width="1.2" stroke-miterlimit="10"/>
+    <path d="M5 11.2857L11 11.2857L9.71429 10" stroke="#647080" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M11 11.2856L9.71429 12.5714" stroke="#647080" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>SG Orchard</li>
+    </ul>
